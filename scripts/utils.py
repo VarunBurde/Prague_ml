@@ -234,3 +234,26 @@ def visualize_point_cloud_3d(points, colors, camera_poses, K):
     )
     
     fig.show()
+
+def visulize_mesh_ply(vertices, triangles, vertex_colors):
+    fig = go.Figure(
+        data=[
+            go.Mesh3d(
+                x=vertices[:,0],
+                y=vertices[:,1],
+                z=vertices[:,2],
+                i=triangles[:,0],
+                j=triangles[:,1],
+                k=triangles[:,2],
+                vertexcolor=vertex_colors,
+            )
+        ],
+        layout=dict(
+            scene=dict(
+                xaxis=dict(visible=False),
+                yaxis=dict(visible=False),
+                zaxis=dict(visible=False)
+            )
+        )
+    )
+    fig.show()
